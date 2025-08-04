@@ -1,0 +1,20 @@
+#root {
+    margin: 0 auto;
+}
+
+.app-header {
+    background: url(discover-journey-maze.svg) #e4f0f1;
+    background-size: cover;
+    background-position: center;
+}
+
+.test-details {
+    padding: 1rem 3rem;
+}
+
+.app-header__title {
+    padding: 5rem 3rem 1rem 3rem;
+    // font-size: 1.3rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}

@@ -1,3 +1,4 @@
+import "./index.scss";
 interface Props {
     index: number;
     text: string;
@@ -11,7 +12,7 @@ export const Question = ({
 
     return (
         <div className="testWindow__Questions--individual">
-            <h3>Question {index + 1}</h3>
+            <h3>Q{index + 1}/24</h3>
             <p>In a job, I would be motivated by</p>
             <p>{text}</p>
         </div>

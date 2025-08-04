@@ -1,0 +1,8 @@
+.cardsTab {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 3rem;
+    max-height: 600px;
+    min-width: 200px;
+    justify-content: space-between;
+}

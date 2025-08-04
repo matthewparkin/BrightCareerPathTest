@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getQuestions, submit } from '../helpers';
-import './index.css';
+import './index.scss';
 import { Question } from '../Question';
 
 export const TestWindow = () => {
@@ -66,15 +66,14 @@ export const TestWindow = () => {
 
     // Not the cleanest but it shows an error state if the user is not logged in.
     if (error) {
-        return <div className="error">{error}</div>;
+        return <div className="testWindow__notPopulated">{error}</div>;
     }
 
     return (
-        <form onSubmit={onSubmit} >
+        <form className="userForm" onSubmit={onSubmit} >
             <section className="testWindow">
                 <div className="testWindow__Progress">
-                    <p>Test Window</p>
-                    <p>Progress: %</p>
+                    <p>Your Progress: %</p>
                 </div>
                 <div className="testWindow__Questions">
                     {
@@ -82,7 +81,7 @@ export const TestWindow = () => {
                             questions.questions.map((question, index) => {
                                 const { text, id } = question;
                                 return (
-                                    <div key={id}>
+                                    <div className="question" key={id}>
                                         <Question
                                             index={index}
                                             text={text}
@@ -90,6 +89,7 @@ export const TestWindow = () => {
                                         <div className="testWindow__AnswerScale--answerScale">
                                             {[...Array(8)].map((_, value) => (
                                                 <input
+                                                    className="testWindow__AnswerScale__input"
                                                     key={value}
                                                     type="radio"
                                                     name={id}
@@ -101,7 +101,7 @@ export const TestWindow = () => {
                                     </div>
                                 );
                             })
-                        ) : <div>Loading questions...</div>
+                        ) : <div className="testWindow__notPopulated">Loading questions...</div>
                     }
                 </div >
 

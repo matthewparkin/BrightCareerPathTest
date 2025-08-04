@@ -1,17 +1,16 @@
-import './App.css';
+import './App.scss';
 import { CardsTab } from './components/CardsTab';
 import { TestWindow } from './components/TestWindow';
 
 const App = () => {
-  // const [count, setCount] = useState(0)
-
   console.log("App component rendered");
   return (
     <>
-      <header>
-        Banner image
-        <h1>Career Path Test</h1>
-        <p>Sub Heading</p>
+      <header className="app-header">
+        <div className="app-header__title">
+          <h1>Career Path Test</h1>
+          <p>Discover careers that match your skills and personality</p>
+        </div>
       </header>
       <CardsTab />
       <p className="test-details">
@@ -20,10 +19,6 @@ const App = () => {
       </p>
 
       <TestWindow />
-      <footer>
-        <p>Footer</p>
-        <p>Footer</p>
-      </footer>
     </>
   )
 }

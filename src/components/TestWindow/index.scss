@@ -1,0 +1,50 @@
+.userForm {
+    padding: 3rem;
+}
+.testWindow {
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: #bfbfbf 0px 2px 8px 0px;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.testWindow__Progress {
+    box-shadow: #bfbfbf 0px 2px 8px 0px;
+    border-radius: 10px;
+    padding: 1rem 3rem;
+}
+
+.testWindow__Questions--individual {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding: 1.5em;
+}
+
+.testWindow__notPopulated {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2em;
+}
+
+.question {
+    padding: 1.5rem 6rem;
+}
+
+.testWindow__AnswerScale--answerScale {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    .testWindow__AnswerScale__input {
+        border: 0px;
+        width: 100%;
+        height: 2em;
+    }
+}
