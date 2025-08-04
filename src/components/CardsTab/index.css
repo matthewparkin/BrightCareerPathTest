@@ -1,0 +1,4 @@
+.cardsTab {
+    display: flex;
+    flex-wrap: nowrap;
+  }
