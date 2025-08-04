@@ -1,18 +1,21 @@
 .testWindow {
     display: flex;
-    flex-wrap: nowrap;
+    flex-direction: column;
 
     box-shadow: #bfbfbf 0px 2px 8px 0px;
     background-color: #ffffff;
 }
 
 .testWindow__Progress {
-    display: flex;
-    flex: auto;
     box-shadow: #bfbfbf 0px 2px 8px 0px;
-
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* justify-content: center; */
     padding: 1.5em;
+}
+
+.testWindow__Questions--individual {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    padding-top: 1.5em;
+    padding-left: 6em;
 }

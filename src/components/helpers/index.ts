@@ -2,14 +2,12 @@ export const getQuestions = async (baseURL: string, user: string) => {
     const url = `${baseURL}/questions?user=${user}`;
 
     try {
-        const response = await fetch(url,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }
-        );
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
@@ -24,20 +22,18 @@ export const getQuestions = async (baseURL: string, user: string) => {
             console.error("An unknown error occurred");
         }
     }
-}
+};
 
 export const getLatestSubmission = async (baseURL: string, user: string) => {
     const url = `${baseURL}/submissions?user=${user}`;
 
     try {
-        const response = await fetch(url,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }
-        );
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
@@ -51,22 +47,28 @@ export const getLatestSubmission = async (baseURL: string, user: string) => {
             console.error("An unknown error occurred");
         }
     }
-}
+};
 
 // This could be streamlined - in this use case getLatestSubmission hits the same endpoint so I could use send another prop through for the method.
 // But I kept these seperate for clarity.
-export const submit = async (baseURL: string, user: string) => {
+export const submit = async (
+    baseURL: string,
+    user: string,
+    formState: {
+        answers: Record<string, number>;
+    }
+) => {
     const url = `${baseURL}/submissions?user=${user}`;
 
     try {
-        const response = await fetch(url,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }
-        );
+        console.log("Submitting form state:", formState);
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formState),
+        });
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
@@ -80,4 +82,4 @@ export const submit = async (baseURL: string, user: string) => {
             console.error("An unknown error occurred");
         }
     }
-}
+};

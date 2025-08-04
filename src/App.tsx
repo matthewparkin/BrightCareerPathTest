@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './App.css';
 import { CardsTab } from './components/CardsTab';
 import { TestWindow } from './components/TestWindow';
