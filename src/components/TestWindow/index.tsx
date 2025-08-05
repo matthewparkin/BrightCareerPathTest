@@ -9,9 +9,9 @@ export const TestWindow = () => {
     const [error, setError] = useState('');
     const [questions, setQuestions] = useState<{ questions: { text: string; id: string }[] | null }>({ questions: null });
     const [formState, setFormState] = useState({
-        answers: {} as Record<string, number>
+        answers: {} as any
     });
-
+    const [latestSubmission, setLatestSubmission] = useState<any>(null);
 
     const onSubmit = (event: React.FormEvent) => {
         event.preventDefault();
@@ -29,22 +29,20 @@ export const TestWindow = () => {
         });
     };
 
-
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
+        const { name, value } = event.target;
+
+        setLatestSubmission((prevState: any) => ({
+            ...prevState,
+            answers: [
+                ...prevState.answers,
+                {
+                    questionId: name, 
+                    answer: parseInt(value, 10),
+                },
+            ],
+        }));
         console.log("Input Change:", { name, value });
-
-        setFormState({
-            ...formState,
-            answers: {
-                ...formState.answers,
-
-                // questionId: name, // Assuming questionId is the name of the input
-                // answer: parseInt(value),
-            },
-        });
     };
 
     useEffect(() => {
@@ -63,6 +61,25 @@ export const TestWindow = () => {
             setError("User not logged in");
         }
     }, []);
+
+    useEffect(() => {
+        if (latestSubmission) {
+            console.log("Latest Submission:", latestSubmission);
+            setFormState((prevState) => ({
+                ...prevState,
+                ...prevState,
+                answers: [
+                    ...prevState.answers,
+                    ...latestSubmission.answers.map((submission: { questionId: any; answer: any; }) => ({
+                        questionId: submission.questionId,
+                        answer: submission.answer,
+                    })),
+                ],
+            })
+            );
+            console.log("Form State Updated:", formState.answers)
+        }
+    }, [latestSubmission]);
 
     // Not the cleanest but it shows an error state if the user is not logged in.
     if (error) {
